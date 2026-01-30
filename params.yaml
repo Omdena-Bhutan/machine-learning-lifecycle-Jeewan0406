@@ -1,6 +1,6 @@
 data:
   raw:
-    raw_path: /content/data/raw/imdb.csv
+    raw_path: data/raw/IMDB Dataset.csv
 
   save_data:
-    dest_path: /content/data/processed
+    dest_path: data/processed

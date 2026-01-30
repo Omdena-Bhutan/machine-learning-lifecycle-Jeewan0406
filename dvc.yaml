@@ -1,15 +1,13 @@
 stages:
   data_loader:
-    cmd: python src/main.py
+    cmd: python main.py
     deps:
-      - src/main.py
+      - main.py
       - src/data/data_loader.py
-      - data/raw/imdb.csv
+      - data/raw/IMDB Dataset.csv
       - params.yaml
     params:
       - data.raw.raw_path
       - data.save_data.dest_path
-    outs:
-      - data/processed:
-          cache: true
-          persist: false
+    
+

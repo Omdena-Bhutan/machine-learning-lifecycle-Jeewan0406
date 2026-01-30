@@ -1,0 +1,25 @@
+schema: '2.0'
+stages:
+  data_loader:
+    cmd: python main.py
+    deps:
+    - path: data/raw/IMDB Dataset.csv
+      hash: md5
+      md5: 308443a50e5c993e7b8a1cdb95750026
+      size: 66212309
+    - path: main.py
+      hash: md5
+      md5: 376c9ce1488f1b68881dbb59d5d44b7c
+      size: 1131
+    - path: params.yaml
+      hash: md5
+      md5: 98ad0c3e8c62ca90e40a39fc5456229e
+      size: 103
+    - path: src/data/data_loader.py
+      hash: md5
+      md5: a9fbadcc69005e826edd531a1f1b622f
+      size: 3272
+    params:
+      params.yaml:
+        data.raw.raw_path: data/raw/IMDB Dataset.csv
+        data.save_data.dest_path: data/processed

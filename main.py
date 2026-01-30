@@ -25,11 +25,11 @@ def main(cfg: DictConfig):
         # Load the dataset
         df = data_loader.load_dataset()
         
-        # Save the dataset to processed directory
-        save_path = Path(cfg.data.save_data.dest_path) / 'imdb_processed.csv'
-        data_loader.save_dataset(df, save_path)
+        # # Save the dataset to processed directory
+        # save_path = Path(cfg.data.save_data.dest_path) / 'imdb_processed.csv'
+        # data_loader.save_dataset(df, save_path)
         
-        logging.info('Pipeline completed successfully')
+        # logging.info('Pipeline completed successfully')
         
     except Exception as e:
         logging.error(f'Pipeline failed to execute: {e}')

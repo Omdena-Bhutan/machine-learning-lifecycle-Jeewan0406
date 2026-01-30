@@ -1,0 +1,5 @@
+data:
+  raw:
+    raw_path: data/raw/IMDB Dataset.csv
+  save_data:
+    dest_path: data/processed

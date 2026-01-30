@@ -69,29 +69,29 @@ class DataLoader():
             logger.error(f'Failed to load csv file at {self.data_path}: {e}')
             raise
         
-    def save_dataset(self, df: pd.DataFrame, path: Path = None) -> Path:
-        """
-        Save a DataFrame to CSV.
-        If no path is provided, saves to the original data_path (overwrite).
+    # def save_dataset(self, df: pd.DataFrame, path: Path = None) -> Path:
+    #     """
+    #     Save a DataFrame to CSV.
+    #     If no path is provided, saves to the original data_path (overwrite).
         
-        Args:
-            df: DataFrame to save
-            path: Optional target path
+    #     Args:
+    #         df: DataFrame to save
+    #         path: Optional target path
             
-        Returns:
-            Path: The path where data was saved
-        """
-        target_path = path if path is not None else self.data_path
+    #     Returns:
+    #         Path: The path where data was saved
+    #     """
+    #     target_path = path if path is not None else self.data_path
 
-        # Ensure parent directory exists
-        target_path.parent.mkdir(parents=True, exist_ok=True)
+    #     # Ensure parent directory exists
+    #     target_path.parent.mkdir(parents=True, exist_ok=True)
 
-        logger.info(f"Saving dataset to {target_path}")
-        try:
-            df.to_csv(target_path, index=False)
-            logger.debug("Save completed successfully")
-            return target_path
+    #     logger.info(f"Saving dataset to {target_path}")
+    #     try:
+    #         df.to_csv(target_path, index=False)
+    #         logger.debug("Save completed successfully")
+    #         return target_path
         
-        except Exception as e:
-            logger.error(f"Failed to save CSV to {target_path}: {e}")
-            raise
+    #     except Exception as e:
+    #         logger.error(f"Failed to save CSV to {target_path}: {e}")
+    #         raise
