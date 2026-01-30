@@ -1,0 +1,19 @@
+[project]
+name = "imdb-sentiment-Analysis"
+version = "0.1.0"
+requires-python = ">=3.11"
+
+dependencies = [
+    "pandas>=3.0,<3.2",
+    "mlflow>=3.6,<4.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "black>=24.0",
+]
+
+tracking = [
+    "mlflow>=3.6,<4.0"
+]

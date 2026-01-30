@@ -1,0 +1,10 @@
+# Configuration management
+hydra-core>=1.3,<1.4
+omegaconf>=2.3,<2.4
+
+# Data processing
+pandas>=2.1,<3
+
+# Experiment tracking
+mlflow>=3.6,<3.9
+
