@@ -1,13 +1,23 @@
-stages:
-  data_loader:
-    cmd: python main.py
-    deps:
+stages: # act as container for all individuals stages that makes workflow
+  data_loader: # identifier of particular stage of the ML pipeline.
+    cmd: python main.py +stage=data_loader # specific command dvc uses to execute the specific stage.
+    deps: # list of files that stage depends on
       - main.py
       - src/data/data_loader.py
       - data/raw/IMDB Dataset.csv
       - params.yaml
-    params:
+    params: # which parameters from params.yaml files are used by this stage.
       - data.raw.raw_path
+      
+  
+  data_cleaning:
+    cmd: python main.py +stage=data_cleaning
+    deps:
+      - main.py
+      - src/data/data_loader.py
+      - src/data/data_cleaning.py
+      - params.yaml
+    params:
       - data.save_data.dest_path
     
 

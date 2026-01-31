@@ -5,6 +5,7 @@ import hydra
 from omegaconf import DictConfig
 
 from src.data.data_loader import DataLoader
+from src.data.data_cleaning import DataCleaning
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
@@ -25,11 +26,14 @@ def main(cfg: DictConfig):
         # Load the dataset
         df = data_loader.load_dataset()
         
-        # # Save the dataset to processed directory
-        # save_path = Path(cfg.data.save_data.dest_path) / 'imdb_processed.csv'
-        # data_loader.save_dataset(df, save_path)
+        # Data cleaning
+        dest_dir = Path(cfg.data.save_data.dest_path)
+        output_path = dest_dir/"cleaned_data.csv"
         
-        # logging.info('Pipeline completed successfully')
+        cleaner = DataCleaning(df = df, target_path = output_path)
+        cleaner.saved_processed_data()
+        logger.info('Pipeline executed successfully')
+    
         
     except Exception as e:
         logging.error(f'Pipeline failed to execute: {e}')

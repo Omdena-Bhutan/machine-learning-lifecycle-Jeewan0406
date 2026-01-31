@@ -1,7 +1,7 @@
 schema: '2.0'
 stages:
   data_loader:
-    cmd: python main.py
+    cmd: python main.py +stage=data_loader
     deps:
     - path: data/raw/IMDB Dataset.csv
       hash: md5
@@ -9,17 +9,38 @@ stages:
       size: 66212309
     - path: main.py
       hash: md5
-      md5: 376c9ce1488f1b68881dbb59d5d44b7c
-      size: 1131
+      md5: 5bfb888c03196cab85612969d02090e3
+      size: 1236
     - path: params.yaml
       hash: md5
-      md5: 98ad0c3e8c62ca90e40a39fc5456229e
-      size: 103
+      md5: 7928e0a7f5f7edf92b732bd143844f28
+      size: 109
     - path: src/data/data_loader.py
       hash: md5
-      md5: a9fbadcc69005e826edd531a1f1b622f
-      size: 3272
+      md5: 89f90250df99e05f7f8f203a3d942b58
+      size: 2321
     params:
       params.yaml:
         data.raw.raw_path: data/raw/IMDB Dataset.csv
+  data_cleaning:
+    cmd: python main.py +stage=data_cleaning
+    deps:
+    - path: main.py
+      hash: md5
+      md5: 5bfb888c03196cab85612969d02090e3
+      size: 1236
+    - path: params.yaml
+      hash: md5
+      md5: 7928e0a7f5f7edf92b732bd143844f28
+      size: 109
+    - path: src/data/data_cleaning.py
+      hash: md5
+      md5: 21efb5b8ee90a7cf9f3b9cd347e79117
+      size: 3153
+    - path: src/data/data_loader.py
+      hash: md5
+      md5: 89f90250df99e05f7f8f203a3d942b58
+      size: 2321
+    params:
+      params.yaml:
         data.save_data.dest_path: data/processed
