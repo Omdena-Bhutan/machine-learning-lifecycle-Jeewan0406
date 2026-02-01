@@ -1,0 +1,10 @@
+[2026-02-01 21:05:38,830][__main__][INFO] - Pipeline started — stage = data_loader
+[2026-02-01 21:05:38,830][__main__][INFO] - Loading raw dataset...
+[2026-02-01 21:05:38,831][src.data.data_loader][DEBUG] - Resolved data path from Hydra: D:\MLOps\omdena-bhutan-ai-specialized-training-2025-26-machine-learning-lifecycle-machine-learning-lifecyle\data\raw\IMDB Dataset.csv
+[2026-02-01 21:05:38,831][src.data.data_loader][INFO] - Loading data from file path D:\MLOps\omdena-bhutan-ai-specialized-training-2025-26-machine-learning-lifecycle-machine-learning-lifecyle\data\raw\IMDB Dataset.csv
+[2026-02-01 21:05:39,275][src.data.data_loader][INFO] - File loaded successfully: 50000 rows, 2 columns
+[2026-02-01 21:05:39,276][__main__][INFO] - Running structural data cleaning...
+[2026-02-01 21:05:39,277][src.data.data_cleaning][INFO] - Dropping duplicate rows
+[2026-02-01 21:05:39,434][src.data.data_cleaning][INFO] - Save data to data\processed\cleaned_data.csv
+[2026-02-01 21:05:40,548][src.data.data_cleaning][DEBUG] - Save completed successfully
+[2026-02-01 21:05:40,550][__main__][INFO] - Pipeline finished successfully — stage: data_loader

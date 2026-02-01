@@ -17,3 +17,6 @@ dagshub>=0.3.30,<0.4
 # Data versioning (with all remotes)
 dvc[all]>=3.50,<4.0
 
+# HTML parsing
+beautifulsoup4>=4.12,<5.0
+

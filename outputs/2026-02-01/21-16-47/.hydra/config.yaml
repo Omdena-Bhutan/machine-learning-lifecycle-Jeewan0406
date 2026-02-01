@@ -1,0 +1,10 @@
+data:
+  raw:
+    raw_path: data/raw/IMDB Dataset.csv
+  save_data:
+    dest_path: data/processed/cleaned_data.csv
+  cleaned:
+    cleaned_path: data/cleaned/text_cleaned.csv
+  text_data:
+    text_path: data/cleaned/text_cleaned.csv
+stage: text_cleaning

@@ -1,5 +1,8 @@
 [core]
     remote = dagshub
+[cache]
+    type = copy
+    dir = C:\dvc-cache
 ['remote "dagshub"']
     url = https://dagshub.com/loggingeneral/IMDB_Sentiment_Analysis.dvc
     auth = basic

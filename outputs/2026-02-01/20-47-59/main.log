@@ -1,0 +1,15 @@
+[2026-02-01 20:47:59,881][root][INFO] - Calling the functions from <class 'src.data.data_loader.DataLoader'> class
+[2026-02-01 20:47:59,882][src.data.data_loader][DEBUG] - Resolved data path from Hydra: D:\MLOps\omdena-bhutan-ai-specialized-training-2025-26-machine-learning-lifecycle-machine-learning-lifecyle\data\raw\IMDB Dataset.csv
+[2026-02-01 20:47:59,882][src.data.data_loader][INFO] - Loading data from file path D:\MLOps\omdena-bhutan-ai-specialized-training-2025-26-machine-learning-lifecycle-machine-learning-lifecyle\data\raw\IMDB Dataset.csv
+[2026-02-01 20:48:00,390][src.data.data_loader][INFO] - File loaded successfully: 50000 rows, 2 columns
+[2026-02-01 20:48:00,391][src.data.data_cleaning][INFO] - Dropping duplicate rows
+[2026-02-01 20:48:00,562][src.data.data_cleaning][INFO] - Save data to data\processed\cleaned_data.csv
+[2026-02-01 20:48:01,722][src.data.data_cleaning][DEBUG] - Save completed successfully
+[2026-02-01 20:48:01,722][__main__][INFO] - Pipeline executed successfully
+[2026-02-01 20:48:01,725][src.data.text_cleaning][INFO] - TextCleaning initialized - column: 'review', rows: 50,000, output: data\cleaned\text_cleaned.csv
+[2026-02-01 20:48:01,725][src.data.text_cleaning][INFO] - Running full cleaning pipeline
+[2026-02-01 20:48:01,725][src.data.text_cleaning][INFO] - Converting 'review' to lowercase
+[2026-02-01 20:48:01,832][src.data.text_cleaning][INFO] - Removing HTML tags from 'review'
+[2026-02-01 20:48:06,468][src.data.text_cleaning][INFO] - Removing special characters from 'review'
+[2026-02-01 20:48:07,583][src.data.text_cleaning][INFO] - Normalizing whitespace in 'review'
+[2026-02-01 20:48:11,141][src.data.text_cleaning][INFO] - Saved 50,000 rows to data\cleaned\text_cleaned.csv (61354.8 KB)
