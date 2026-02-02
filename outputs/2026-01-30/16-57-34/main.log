@@ -1,0 +1,4 @@
+[2026-01-30 16:57:34,048][root][INFO] - Calling the functions from <class 'src.data.data_loader.DataLoader'> class
+[2026-01-30 16:57:34,049][src.data.data_loader][DEBUG] - Resolved data path from Hydra: D:\MLOps\omdena-bhutan-ai-specialized-training-2025-26-machine-learning-lifecycle-machine-learning-lifecyle\IMDB Dataset.csv
+[2026-01-30 16:57:34,049][root][ERROR] - File not found at D:\MLOps\omdena-bhutan-ai-specialized-training-2025-26-machine-learning-lifecycle-machine-learning-lifecyle\IMDB Dataset.csv
+[2026-01-30 16:57:34,049][root][ERROR] - Pipeline failed to execute: File not found at D:\MLOps\omdena-bhutan-ai-specialized-training-2025-26-machine-learning-lifecycle-machine-learning-lifecyle\IMDB Dataset.csv

@@ -1,0 +1,31 @@
+stages:
+  # Stage 1: Load and clean data
+  data_loader:
+    cmd: python main.py +stage=data_loader
+    deps:
+      - main.py
+      - src/data/data_loader.py
+      - src/data/data_cleaning.py
+      - data/raw/IMDB Dataset.csv
+      - params.yaml
+    params:
+      - params.yaml:
+          - data.raw.raw_path
+          - data.save_data.dest_path
+    outs:
+      - data/processed/cleaned_data.csv
+  
+  # Stage 2: Text cleaning
+  text_cleaning:
+    cmd: python main.py +stage=text_cleaning
+    deps:
+      - main.py
+      - src/data/text_cleaning.py
+      - data/processed/cleaned_data.csv
+      - params.yaml
+    params:
+      - params.yaml:
+          - data.save_data.dest_path
+          - data.cleaned.cleaned_path
+    outs:
+      - data/cleaned/text_cleaned.csv

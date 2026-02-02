@@ -1,0 +1,5 @@
+[2026-02-01 20:26:29,819][root][INFO] - Calling the functions from <class 'src.data.data_loader.DataLoader'> class
+[2026-02-01 20:26:29,820][src.data.data_loader][DEBUG] - Resolved data path from Hydra: D:\MLOps\omdena-bhutan-ai-specialized-training-2025-26-machine-learning-lifecycle-machine-learning-lifecyle\data\raw\IMDB Dataset.csv
+[2026-02-01 20:26:29,820][src.data.data_loader][INFO] - Loading data from file path D:\MLOps\omdena-bhutan-ai-specialized-training-2025-26-machine-learning-lifecycle-machine-learning-lifecyle\data\raw\IMDB Dataset.csv
+[2026-02-01 20:26:30,282][src.data.data_loader][INFO] - File loaded successfully: 50000 rows, 2 columns
+[2026-02-01 20:26:30,283][root][ERROR] - Pipeline failed to execute: DataCleaning.__init__() got an unexpected keyword argument 'output_path'
