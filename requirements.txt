@@ -20,3 +20,6 @@ dvc[all]>=3.50,<4.0
 # HTML parsing
 beautifulsoup4>=4.12,<5.0
 
+# NLP
+nltk>=3.8.1,<4.0
+

@@ -8,6 +8,7 @@ from omegaconf import DictConfig
 from src.data.data_loader import DataLoader
 from src.data.data_cleaning import DataCleaning
 from src.data.text_cleaning import TextCleaning
+from src.data.nlp_preprocessing import NLPProcessor
 
 # ────────────────────────────────────────────────
 # Logging setup (moved outside function for clarity)
@@ -77,6 +78,11 @@ def main(cfg: DictConfig):
             text_cleaner.run_all().save()
 
         logger.info(f"Pipeline finished successfully — stage: {stage}")
+        
+        nlp = NLPProcessor(input_path = cfg.data.text_data.text_path,
+                            output_path=cfg.data.nlp_data.nlp_path)
+        nlp.run()
+        
 
     except Exception as e:
         logger.exception("Pipeline failed")   # ← .exception() gives full traceback

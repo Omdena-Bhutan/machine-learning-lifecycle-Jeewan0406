@@ -29,3 +29,19 @@ stages:
           - data.cleaned.cleaned_path
     outs:
       - data/cleaned/text_cleaned.csv
+
+  # ===============================
+  # Stage 3: NLP preprocessing
+  # ===============================
+  nlp_preprocessing:
+    cmd: python main.py +stage=nlp_preprocessing
+    deps:
+      - main.py
+      - src/data/nlp_preprocessing.py
+      - data/cleaned/text_cleaned.csv
+      - params.yaml
+    params:
+      - data.text_data.text_path
+      - data.nlp_data.nlp_path
+    outs:
+      - data/nlp/nlp_data.csv

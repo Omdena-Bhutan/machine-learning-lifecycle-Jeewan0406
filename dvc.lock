@@ -9,12 +9,12 @@ stages:
       size: 66212309
     - path: main.py
       hash: md5
-      md5: b4758e2073e2ab21a20fba98c7c28bf6
-      size: 3899
+      md5: 2414758042919486c15db1fe3336f4a2
+      size: 4131
     - path: params.yaml
       hash: md5
-      md5: c6c39016a23bf5098d8b2256d1a61ff4
-      size: 249
+      md5: b12c14a637b787c6220e27f2c5b08945
+      size: 301
     - path: src/data/data_cleaning.py
       hash: md5
       md5: 21efb5b8ee90a7cf9f3b9cd347e79117
@@ -65,12 +65,12 @@ stages:
       nfiles: 1
     - path: main.py
       hash: md5
-      md5: b4758e2073e2ab21a20fba98c7c28bf6
-      size: 3899
+      md5: 2414758042919486c15db1fe3336f4a2
+      size: 4131
     - path: params.yaml
       hash: md5
-      md5: c6c39016a23bf5098d8b2256d1a61ff4
-      size: 249
+      md5: b12c14a637b787c6220e27f2c5b08945
+      size: 301
     - path: src/data/text_cleaning.py
       hash: md5
       md5: 6fc2c5e9ad27f489626cb9fd0ba4c157
@@ -84,3 +84,31 @@ stages:
       hash: md5
       md5: eb1dd73af16b37ebb435dfa1ff2d6864
       size: 62356696
+  nlp_preprocessing:
+    cmd: python main.py +stage=nlp_preprocessing
+    deps:
+    - path: data/cleaned/text_cleaned.csv
+      hash: md5
+      md5: eb1dd73af16b37ebb435dfa1ff2d6864
+      size: 62356696
+    - path: main.py
+      hash: md5
+      md5: 2414758042919486c15db1fe3336f4a2
+      size: 4131
+    - path: params.yaml
+      hash: md5
+      md5: b12c14a637b787c6220e27f2c5b08945
+      size: 301
+    - path: src/data/nlp_preprocessing.py
+      hash: md5
+      md5: 5050474d55009576b9670d65ba9c81b6
+      size: 3710
+    params:
+      params.yaml:
+        data.nlp_data.nlp_path: data/nlp/nlp_data.csv
+        data.text_data.text_path: data/cleaned/text_cleaned.csv
+    outs:
+    - path: data/nlp/nlp_data.csv
+      hash: md5
+      md5: 258c6408c3119de77ec582aaa1dacb6c
+      size: 60056235
