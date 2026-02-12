@@ -1,0 +1,102 @@
+stages:
+  # Stage 1: Load and clean data
+  data_loader:
+    cmd: python main.py +stage=data_loader
+    deps:
+      - main.py
+      - src/data/data_loader.py
+      - src/data/data_cleaning.py
+      - data/raw/IMDB Dataset.csv
+      - params.yaml
+    params:
+      - params.yaml:
+          - data.raw.raw_path
+          - data.save_data.dest_path
+    outs:
+      - data/processed/cleaned_data.csv
+  
+  # Stage 2: Text cleaning
+  text_cleaning:
+    cmd: python main.py +stage=text_cleaning
+    deps:
+      - main.py
+      - src/data/text_cleaning.py
+      - data/processed/cleaned_data.csv
+      - params.yaml
+    params:
+      - params.yaml:
+          - data.save_data.dest_path
+          - data.cleaned.cleaned_path
+    outs:
+      - data/cleaned/text_cleaned.csv
+  # Stage 3: Train-test split
+  train_test_split:
+    cmd: python main.py +stage=split
+    deps:
+      - main.py
+      - src/data/split.py
+      - data/cleaned/text_cleaned.csv
+      - params.yaml
+    params:
+      - params.yaml:
+          - data.cleaned.cleaned_path
+          - data.splits.train_path
+          - data.splits.val_path
+          - data.splits.test_path
+          - data.splits.test_size
+          - data.splits.val_size
+          - data.splits.random_state
+          - data.splits.feature_column
+          - data.splits.target_column
+          - data.splits.stratify
+    outs:
+      - data/splits/train.csv
+      - data/splits/val.csv
+      - data/splits/test.csv
+
+  # Stage 4: Vectorization
+  vectorization:
+    cmd: python main.py +stage=vectorization
+    deps:
+      - main.py
+      - src/data/vectorization.py
+      - data/splits/train.csv
+      - data/splits/val.csv
+      - params.yaml
+    params:
+      - params.yaml:
+          - data.splits.train_path
+          - data.splits.val_path
+          - data.vectorized.train_path
+          - data.vectorized.val_path
+          - model.model_name
+    outs:
+      - data/splits/train_vectorized
+      - data/splits/val_vectorized
+
+  # Stage 5: Model training
+  model_training:
+    cmd: python main.py +stage=model_training
+    deps:
+      - main.py
+      - src/model/model.py
+      - data/splits/train_vectorized
+      - data/splits/val_vectorized
+      - params.yaml
+    params:
+      - params.yaml:
+          - model.model_name
+          - model.num_labels
+          - model.freeze_base
+          - paths.output_dir
+          - train.epochs
+          - train.batch_size
+          - train.learning_rate
+          - train.logging_steps
+          - train.eval_steps
+          - train.save_steps
+          - train.early_stopping_patience
+          - train.experiment_name
+          - train.run_name
+    outs:
+      - outputs/best_model

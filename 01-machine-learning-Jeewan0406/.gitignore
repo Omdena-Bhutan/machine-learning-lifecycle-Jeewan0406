@@ -1,0 +1,100 @@
+# ===============================
+# Python virtual environments
+# ===============================
+# Environments
+.venv/
+.venv_new/
+env/
+venv/
+# ===============================
+# Python cache / bytecode
+# ===============================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ===============================
+# Jupyter / IPython
+# ===============================
+.ipynb_checkpoints/
+.profile_default/
+ipython_config.py
+
+# ===============================
+# OS-generated files
+# ===============================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===============================
+# Logs
+# ===============================
+*.log
+logs/
+
+# ===============================
+# Testing / coverage
+# ===============================
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ===============================
+# IDE / editor settings
+# ===============================
+.vscode/
+.idea/
+*.iml
+
+# ===============================
+# Temporary files
+# ===============================
+tmp/
+temp/
+*.tmp
+
+# ===============================
+# Build / distribution
+# ===============================
+build/
+dist/
+*.egg-info/
+
+# ===============================
+# ML artifacts (generated locally)
+# ===============================
+mlruns/
+wandb/
+
+# ===============================
+# DVC local files (do NOT ignore .dvc files)
+# ===============================
+.dvc/tmp/
+.dvc/cache/
+
+# ===============================
+# Environment variables / secrets
+# ===============================
+.env
+.env.*
+*.env
+
+
+nltk_data/
+
+# Hydra outputs
+outputs/
+multirun/
+
+# Local ML databases
+mlflow.db
+
+# Large arrow/data files (if you want DVC to handle them)
+*.arrow
+
+outputs/
+mlflow.db
+allfiles.txt
+data/Split/*.csv
+data/vectorize/
