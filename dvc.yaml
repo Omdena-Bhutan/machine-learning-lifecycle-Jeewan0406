@@ -1,6 +1,6 @@
 stages:
   preprocess:
-    cmd: python main.py text_preprocesing
+    cmd: python main.py
     
     deps:
       - main.py
@@ -14,8 +14,6 @@ stages:
     params:
       - data.text_column
       - data.target_column
-
+    
     outs:
       - data/processed/cleaned_data.csv
-
- 

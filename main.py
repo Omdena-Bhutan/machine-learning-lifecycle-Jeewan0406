@@ -1,4 +1,3 @@
-# Standard library imports
 import sys
 import logging
 
@@ -13,16 +12,16 @@ def main():
         print("Loading configuration...")
         data_loader = DataLoaderClass("configs/config.yaml")
         cfg = data_loader.load()
-
+        
         # Setup logging
         print("Setting up logging...")
         logger = setup_logging(cfg)
         logger.info("Logging is set up successfully.")
-
+        
         # Load params if text_column is in params.yaml
         params_loader = DataLoaderClass("params.yaml")
         params = params_loader.load()
-
+        
         # Text preprocessing
         logger.info("Running text preprocessing...")
         cleaner = TextPreprocessor(
@@ -33,12 +32,13 @@ def main():
         )
         cleaner.run_all().save()
         logger.info("Text preprocessing completed successfully.")
-
+        
     except Exception as e:
-        logging.error(f"An error occurred: {e}")
+        if 'logger' in locals():
+            logger.error(f"An error occurred: {e}")
+        else:
+            logging.error(f"An error occurred: {e}")
         raise
 
 if __name__ == "__main__":
     main()
-
-
