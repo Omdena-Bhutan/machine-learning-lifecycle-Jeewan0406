@@ -1,0 +1,154 @@
+schema: '2.0'
+stages:
+  data_loader:
+    cmd: python main.py +stage=data_loader
+    deps:
+    - path: data/raw/IMDB Dataset.csv
+      hash: md5
+      md5: 308443a50e5c993e7b8a1cdb95750026
+      size: 66212309
+    - path: main.py
+      hash: md5
+      md5: 0855b588182205bd3f742d3511c8cdbb
+      size: 5583
+    - path: params.yaml
+      hash: md5
+      md5: cf6d785c15816c908039b51589037ff1
+      size: 1392
+    - path: src/data/data_cleaning.py
+      hash: md5
+      md5: 21efb5b8ee90a7cf9f3b9cd347e79117
+      size: 3153
+    - path: src/data/data_loader.py
+      hash: md5
+      md5: 89f90250df99e05f7f8f203a3d942b58
+      size: 2321
+    params:
+      params.yaml:
+        data.raw.raw_path: data/raw/IMDB Dataset.csv
+        data.save_data.dest_path: data/processed/cleaned_data.csv
+    outs:
+    - path: data/processed/cleaned_data.csv
+      hash: md5
+      md5: ff79512785eea60e5cb4f2ddf935e361.dir
+      size: 65764790
+      nfiles: 1
+  data_cleaning:
+    cmd: python main.py +stage=data_cleaning
+    deps:
+    - path: main.py
+      hash: md5
+      md5: 5bfb888c03196cab85612969d02090e3
+      size: 1236
+    - path: params.yaml
+      hash: md5
+      md5: 7928e0a7f5f7edf92b732bd143844f28
+      size: 109
+    - path: src/data/data_cleaning.py
+      hash: md5
+      md5: 21efb5b8ee90a7cf9f3b9cd347e79117
+      size: 3153
+    - path: src/data/data_loader.py
+      hash: md5
+      md5: 89f90250df99e05f7f8f203a3d942b58
+      size: 2321
+    params:
+      params.yaml:
+        data.save_data.dest_path: data/processed
+  text_cleaning:
+    cmd: python main.py +stage=text_cleaning
+    deps:
+    - path: data/processed/cleaned_data.csv
+      hash: md5
+      md5: ff79512785eea60e5cb4f2ddf935e361.dir
+      size: 65764790
+      nfiles: 1
+    - path: main.py
+      hash: md5
+      md5: 0855b588182205bd3f742d3511c8cdbb
+      size: 5583
+    - path: params.yaml
+      hash: md5
+      md5: cf6d785c15816c908039b51589037ff1
+      size: 1392
+    - path: src/data/text_cleaning.py
+      hash: md5
+      md5: 6fc2c5e9ad27f489626cb9fd0ba4c157
+      size: 4379
+    params:
+      params.yaml:
+        data.cleaned.cleaned_path: data/cleaned/text_cleaned.csv
+        data.save_data.dest_path: data/processed/cleaned_data.csv
+    outs:
+    - path: data/cleaned/text_cleaned.csv
+      hash: md5
+      md5: eb1dd73af16b37ebb435dfa1ff2d6864
+      size: 62356696
+  nlp_preprocessing:
+    cmd: python main.py +stage=nlp_preprocessing
+    deps:
+    - path: data/cleaned/text_cleaned.csv
+      hash: md5
+      md5: eb1dd73af16b37ebb435dfa1ff2d6864
+      size: 62356696
+    - path: main.py
+      hash: md5
+      md5: 2414758042919486c15db1fe3336f4a2
+      size: 4131
+    - path: params.yaml
+      hash: md5
+      md5: b12c14a637b787c6220e27f2c5b08945
+      size: 301
+    - path: src/data/nlp_preprocessing.py
+      hash: md5
+      md5: 5050474d55009576b9670d65ba9c81b6
+      size: 3710
+    params:
+      params.yaml:
+        data.nlp_data.nlp_path: data/nlp/nlp_data.csv
+        data.text_data.text_path: data/cleaned/text_cleaned.csv
+    outs:
+    - path: data/nlp/nlp_data.csv
+      hash: md5
+      md5: 258c6408c3119de77ec582aaa1dacb6c
+      size: 60056235
+  preprocess:
+    cmd: python main.py text_preprocesing
+    deps:
+    - path: configs/config.yaml
+      hash: md5
+      md5: e73a670ca7b18e775bee1ccdbaa21c84
+      size: 577
+    - path: data/raw/IMDB Dataset.csv
+      hash: md5
+      md5: 308443a50e5c993e7b8a1cdb95750026
+      size: 66212309
+    - path: main.py
+      hash: md5
+      md5: f6d58571868c2078025cdc5fd0db9a17
+      size: 1298
+    - path: params.yaml
+      hash: md5
+      md5: 2d964136fdbf09227d6c6971b402fad6
+      size: 58
+    - path: src/data/data_loader.py
+      hash: md5
+      md5: 09aab723c0c3a69d190c8a1d81b0e6ae
+      size: 1470
+    - path: src/data/logging_setup.py
+      hash: md5
+      md5: 91c6555c003520a4e60630a807592e9a
+      size: 1581
+    - path: src/data/text_preprocessing.py
+      hash: md5
+      md5: 1c6494c61bc8a57c1cf4d2a4c14ddcf5
+      size: 5028
+    params:
+      params.yaml:
+        data.target_column: sentiment
+        data.text_column: review
+    outs:
+    - path: data/processed/cleaned_data.csv
+      hash: md5
+      md5: 0b0ffb3416bfc2afdb7f8bf0835812b9
+      size: 63091177

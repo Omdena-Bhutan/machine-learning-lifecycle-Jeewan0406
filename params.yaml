@@ -1,0 +1,3 @@
+data:
+  text_column: review
+  target_column: sentiment
