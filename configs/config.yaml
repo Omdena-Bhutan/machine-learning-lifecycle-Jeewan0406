@@ -1,24 +1,3 @@
-# logging:
-#   level: DEBUG
-#   log_file: logs/app.log
-#   show_in_console: true
-#   format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-#   date_format: '%Y-%m-%d %H:%M:%S'
-
-# path: # <-- Is called section or namespace, major category that groups related parameters together
-#   raw: # <--- Subsection or sub-namespace, for category within the major category
-#     path: "data/raw/IMDB Dataset.csv" # <-- Called configuration parameter, called a parameter because you can change its value to modify program behavior
-  
-#   processed:
-#     path: data/processed/cleaned_data.csv
-
-logging:
-  level: DEBUG
-  log_file: logs/app.log
-  show_in_console: true
-  format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-  date_format: '%Y-%m-%d %H:%M:%S'
-
 path:
   raw:
     path: data/raw/IMDB Dataset.csv

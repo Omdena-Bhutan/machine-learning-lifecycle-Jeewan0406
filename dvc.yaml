@@ -5,6 +5,7 @@ stages:
     deps:
       - main.py
       - params.yaml
+      - configs/logging.yaml
       - configs/config.yaml
       - src/data/data_loader.py
       - data/raw/IMDB Dataset.csv
