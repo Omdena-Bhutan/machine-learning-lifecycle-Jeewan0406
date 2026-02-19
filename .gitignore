@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-# Python virtual environments
+
 .venv
 venv/
 ENV/
@@ -137,4 +136,4 @@ nltk_data/
 # Unnecessary Files
 # ===============================
 README.md.md
->>>>>>> master
+
