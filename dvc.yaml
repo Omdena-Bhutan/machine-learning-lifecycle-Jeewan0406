@@ -1,4 +1,5 @@
 stages:
+<<<<<<< HEAD
   # Stage 1: Load and clean data
   data_loader:
     cmd: python main.py +stage=data_loader
@@ -29,3 +30,24 @@ stages:
           - data.cleaned.cleaned_path
     outs:
       - data/cleaned/text_cleaned.csv
+=======
+  preprocess:
+    cmd: python main.py
+    
+    deps:
+      - main.py
+      - params.yaml
+      - configs/logging.yaml
+      - configs/config.yaml
+      - src/data/data_loader.py
+      - data/raw/IMDB Dataset.csv
+      - src/data/logging_setup.py
+      - src/data/text_preprocessing.py
+    
+    params:
+      - data.text_column
+      - data.target_column
+    
+    outs:
+      - data/processed/cleaned_data.csv
+>>>>>>> master

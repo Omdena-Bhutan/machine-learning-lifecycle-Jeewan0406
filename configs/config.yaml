@@ -1,0 +1,5 @@
+path:
+  raw:
+    path: data/raw/IMDB Dataset.csv
+  processed:
+    path: data/processed/cleaned_data.csv

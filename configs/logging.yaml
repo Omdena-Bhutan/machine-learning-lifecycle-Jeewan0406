@@ -1,0 +1,8 @@
+
+logging:
+  level: DEBUG
+  log_file: logs/app.log
+  show_in_console: true
+  format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+  date_format: '%Y-%m-%d %H:%M:%S'
+

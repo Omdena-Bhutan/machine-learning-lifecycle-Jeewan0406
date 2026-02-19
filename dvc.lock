@@ -1,14 +1,25 @@
 schema: '2.0'
 stages:
+<<<<<<< HEAD
   data_loader:
     cmd: python main.py +stage=data_loader
     deps:
+=======
+  preprocess:
+    cmd: python main.py
+    deps:
+    - path: configs/config.yaml
+      hash: md5
+      md5: 2d165645e81ccff7a6657eae3de6e6b7
+      size: 893
+>>>>>>> master
     - path: data/raw/IMDB Dataset.csv
       hash: md5
       md5: 308443a50e5c993e7b8a1cdb95750026
       size: 66212309
     - path: main.py
       hash: md5
+<<<<<<< HEAD
       md5: b4758e2073e2ab21a20fba98c7c28bf6
       size: 3899
     - path: params.yaml
@@ -84,3 +95,32 @@ stages:
       hash: md5
       md5: eb1dd73af16b37ebb435dfa1ff2d6864
       size: 62356696
+=======
+      md5: d032167b0cf1c07c7a9a4e5b931e79f1
+      size: 1402
+    - path: params.yaml
+      hash: md5
+      md5: 2d964136fdbf09227d6c6971b402fad6
+      size: 58
+    - path: src/data/data_loader.py
+      hash: md5
+      md5: 74534c00228ba4edd43712e90f46a013
+      size: 1210
+    - path: src/data/logging_setup.py
+      hash: md5
+      md5: 25608089c2cee3282086bc13e832be99
+      size: 1581
+    - path: src/data/text_preprocessing.py
+      hash: md5
+      md5: b4b41423eefbe7f537c8a84e60345c6b
+      size: 4969
+    params:
+      params.yaml:
+        data.target_column: sentiment
+        data.text_column: review
+    outs:
+    - path: data/processed/cleaned_data.csv
+      hash: md5
+      md5: 0b0ffb3416bfc2afdb7f8bf0835812b9
+      size: 63091177
+>>>>>>> master

@@ -1,4 +1,5 @@
 data:
+<<<<<<< HEAD
   raw:
     raw_path: data/raw/IMDB Dataset.csv
 
@@ -11,3 +12,11 @@ data:
   text_data:
     text_path: data/cleaned/text_cleaned.csv
   
+=======
+  text_column: review
+  target_column: sentiment
+  
+
+experiment:
+  name: exp_1
+>>>>>>> master

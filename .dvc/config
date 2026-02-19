@@ -1,4 +1,5 @@
 [core]
+<<<<<<< HEAD
     remote = dagshub
 [cache]
     type = copy
@@ -8,3 +9,6 @@
     auth = basic
     user = loggingeneral
     password = 8f4163c5e3ae5a344df6cddb3904765ab18fb446
+=======
+    remote = origin
+>>>>>>> master
