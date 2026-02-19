@@ -9,30 +9,38 @@ from src.data.text_preprocessing import TextPreprocessor
 
 def main():
     try:
-        # Load configuration
+        # Load configuration for logging
         print("Loading configuration...")
         loader = DataLoaderClass("configs/logging.yaml")
-        cfg = loader.load()
+        c = loader.load()
         
+        # Load parameters for the experiment
+        print("Loading parameters...")
         params_loader = DataLoaderClass("params.yaml")
         params = params_loader.load()
         
         # Setup logging
         print("Setting up logging...")
-        logger = Logger(cfg, experiment_name= params.experiment.name)
+        logger_instance = Logger(c, experiment_name=params.experiment.name)
+        logger = logger_instance.get_logger() 
+        
+        # Load the config for data paths
+        logger.info("Loading data paths configuration...")
+        config_loader = DataLoaderClass("configs/config.yaml")
+        cfg = config_loader.load()
         
         
-    
-        # # Text preprocessing
-        # logger.info("Running text preprocessing...")
-        # cleaner = TextPreprocessor(
-        #     input_path=cfg.path.raw.path,
-        #     output_path=cfg.path.processed.path,
-        #     text_column=params.data.text_column,
-        #     logger=logger
-        # )
-        # cleaner.run_all().save()
-        # logger.info("Text preprocessing completed successfully.")
+        
+        # Text preprocessing
+        logger.info("Running text preprocessing...")
+        cleaner = TextPreprocessor(
+            input_path=cfg.path.raw.path,
+            output_path=cfg.path.processed.path,
+            text_column=params.data.text_column,
+            logger=logger
+        )
+        cleaner.run_all().save()
+        logger.info("Text preprocessing completed successfully.")
         
     except Exception as e:
         if 'logger' in locals():

@@ -1,3 +1,8 @@
 [cache]
     type = copy
     dir = C:\dvc-cache
+[core]
+    remote = dagshub
+['remote "dagshub"']
+    url = s3://dagshub.com/loggingeneral/IMDBSentimentAnalysis2026
+    endpointurl = https://dagshub.com/loggingeneral/IMDBSentimentAnalysis2026.s3

@@ -16,13 +16,16 @@ class Logger:
         self.log_config = config.logging
         self.experiment_name = experiment_name
         
-        
+        # Create experiment directory
         log_base = Path(self.config.logging.log_file).parent
-        self.experiment_dir = (log_base/self.experiment_name/f"{self.experiment_name}_{datetime.now().strftime('%Y%m%d_%H%M%S')}")
+        self.experiment_dir = (
+            log_base / self.experiment_name / 
+            f"{self.experiment_name}_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+        )
         self.experiment_dir.mkdir(parents=True, exist_ok=True)
         
-        
-        self.logger = self._setup_logger()
+        # Setup logger internally
+        self._logger = self._setup_logger()
 
         
     def _setup_logger(self) -> logging.Logger:
@@ -57,5 +60,8 @@ class Logger:
 
         return logger
 
+    def get_logger(self) -> logging.Logger:
+        """Return the actual Python logging.Logger instance."""
+        return self._logger
 
 
