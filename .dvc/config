@@ -4,5 +4,4 @@
 [core]
     remote = dagshub
 ['remote "dagshub"']
-    url = s3://dagshub.com/loggingeneral/IMDBSentimentAnalysis2026
-    endpointurl = https://dagshub.com/loggingeneral/IMDBSentimentAnalysis2026.s3
+    url = https://dagshub.com/loggingeneral/IMDBSentimentAnalysis2026.dvc
