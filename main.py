@@ -6,6 +6,7 @@ from src.utils.logging_setup import Logger
 from src.utils.data_loader  import DataLoaderClass
 
 from src.data.text_preprocessing import TextPreprocessor
+from src.data.train_val_test_split import TrainTestSplit
 
 def main():
     try:
@@ -41,6 +42,20 @@ def main():
         )
         cleaner.run_all().save()
         logger.info("Text preprocessing completed successfully.")
+        
+        # Splitting data into Train, Valid and Test format
+        logger.info("Splitting data into train, valid and test...")
+        splitter = TrainTestSplit(
+            config=cfg,
+            params=params,
+            logger=logger
+        )
+        train_path, valid_path, test_path = splitter.split_data()
+
+        logger.info(f"Train path: {train_path}")
+        logger.info(f"Valid path: {valid_path}")
+        logger.info(f"Test path:  {test_path}")
+        logger.info("Data splitting completed successfully.")
         
     except Exception as e:
         if 'logger' in locals():

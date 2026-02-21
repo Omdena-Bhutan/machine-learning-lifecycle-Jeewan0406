@@ -1,6 +1,6 @@
 stages:
   text_preprocessing:
-    cmd: python main.py
+    cmd: python main.py --stage text_preprocessing
     deps:
       - main.py
       - src/utils/data_loader.py
@@ -9,43 +9,30 @@ stages:
       - configs/config.yaml
       - data/raw/IMDB Dataset.csv
     params:
-      - experiment.name
-      - data.text_column
+      - params.yaml:
+          - experiment.name
+          - data.text_column
     outs:
       - data/processed/cleaned_data.csv
-  
-  # # Stage 2: Text cleaning
-  # text_cleaning:
-  #   cmd: python main.py +stage=text_cleaning
-  #   deps:
-  #     - main.py
-  #     - src/data/text_cleaning.py
-  #     - data/processed/cleaned_data.csv
-  #     - params.yaml
-  #   params:
-  #     - params.yaml:
-  #         - data.save_data.dest_path
-  #         - data.cleaned.cleaned_path
-  #   outs:
-  #     - data/cleaned/text_cleaned.csv
 
-  # preprocess:
-  #   cmd: python main.py
-    
-  #   deps:
-  #     - main.py
-  #     - params.yaml
-  #     - configs/logging.yaml
-  #     - configs/config.yaml
-  #     - src/data/data_loader.py
-  #     - data/raw/IMDB Dataset.csv
-  #     - src/data/logging_setup.py
-  #     - src/data/text_preprocessing.py
-    
-  #   params:
-  #     - data.text_column
-  #     - data.target_column
-    
-  #   outs:
-  #     - data/processed/cleaned_data.csv
-
+  train_val_test_split:
+    cmd: python main.py --stage train_val_test_split
+    deps:
+      - main.py
+      - src/utils/data_loader.py
+      - src/utils/logging_setup.py
+      - src/data/train_val_test_split.py
+      - configs/config.yaml
+      - data/processed/cleaned_data.csv
+    params:
+      - params.yaml:
+          - data.text_column
+          - data.target_column
+          - split.test_size
+          - split.val_size
+          - split.random_state
+          - split.stratify
+    outs:
+      - data/split/train.csv
+      - data/split/valid.csv
+      - data/split/test.csv

@@ -3,3 +3,8 @@ path:
     path: data/raw/IMDB Dataset.csv
   processed:
     path: data/processed/cleaned_data.csv
+
+split:
+    train: data/split/train.csv
+    valid: data/split/valid.csv
+    test: data/split/test.csv
